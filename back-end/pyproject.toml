@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "back-end"
+version = "0.1.0"
+description = ""
+authors = ["Jan Hein de Jong <JHdJ@allseas.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.64.0"
+uvicorn = "^0.13.4"
+
+[tool.poetry.dev-dependencies]
+black = "^21.5b0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
