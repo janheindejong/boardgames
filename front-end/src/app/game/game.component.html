@@ -1,1 +1,9 @@
-<p>game works!</p>
+<div>
+    <b>{{ name }}</b> <br>
+    <i>{{ date }}</i>
+    <ul>
+        <li *ngFor="let player of players">
+            {{ player }}
+        </li>
+    </ul>
+</div>

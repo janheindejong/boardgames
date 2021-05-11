@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bunnik-games';
+  games = [
+    {
+      "name": "Test", 
+      "date": "1-1-2020", 
+      "players": ["Jan Hein", "Dirk"]
+    }
+  ]
 }
