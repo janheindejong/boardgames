@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Game } from './game/game.component';
+import { GamesService } from './games.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bunnik-games';
-  games = [
-    {
-      "name": "Test", 
-      "date": "1-1-2020", 
-      "players": ["Jan Hein", "Dirk"]
-    }
-  ]
+  games: Game[]
+
+  constructor(service: GamesService) {
+    this.games = service.getGames()
+  }
+  
 }

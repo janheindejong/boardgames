@@ -9,6 +9,12 @@ export class GameComponent {
 
   @Input("name") name: string 
   @Input("date") date: string 
-  @Input("players") players: Array<string>
+  @Input("players") players: string[]
 
+}
+
+export type Game = {
+  name: string,
+  date: string 
+  players: string[]
 }
