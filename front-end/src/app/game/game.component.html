@@ -1,8 +1,8 @@
 <div>
-    <b>{{ name }}</b> <br>
-    <i>{{ date }}</i>
+    <b>{{ game.name }}</b><br>
+    <i>{{ game.date }}</i>
     <ul>
-        <li *ngFor="let player of players">
+        <li *ngFor="let player of game.players">
             {{ player }}
         </li>
     </ul>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Game } from './game/game.component';
-import { GamesService } from './games.service';
+import { HttpService } from './games.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,12 @@ import { GamesService } from './games.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bunnik-games';
-  games: Game[]
 
-  constructor(service: GamesService) {
-    this.games = service.getGames()
+  title = 'bunnik-games';
+  games: Game[];
+
+  constructor(service: HttpService<Game[]>) {
+    service.get("/games").subscribe((games: Game[]) => {this.games = games});
   }
   
 }
