@@ -1,6 +1,6 @@
 """Database"""
 
-from sqlalchemy import func
+from sqlalchemy import func, text
 from sqlalchemy.orm import Session, selectinload
 
 from .models import Game, Participant
@@ -34,7 +34,7 @@ def get_scores(db: Session):
             WEIGHT_PERFORMANCE * stmt.c.performance
             + WEIGHT_PARTICIPATION * stmt.c.participation
         ).label("score"),
-    ).order_by("score")
+    ).order_by(text("score desc"))
     return query.all()
 
 
