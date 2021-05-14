@@ -1,1 +1,18 @@
-<p>games works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Time</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of games">
+            <td>{{ game.name }}</td>
+            <td>{{ game.datetime }}</td>
+            <td>{{ game.duration }} min</td>
+            <td>{{ game.points }} </td>
+        </tr>
+    </tbody>
+</table>
