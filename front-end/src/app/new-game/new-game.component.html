@@ -1,0 +1,118 @@
+<fieldset [disabled]="isLoading">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create new game</h5>
+    
+            <div class="card-text">
+                <p>You can create a new game here.</p>
+            </div>
+            
+            
+            <!-- Input form -->
+            <form [formGroup]="form">
+    
+                <!-- Game name -->
+                <div class="mb-3">
+                    <label for="gameName" class="form-label">Name</label>
+                    <input 
+                        formControlName="name"
+                        placeholder="Name of the game that was played (e.g. Camel Up)"
+                        type="text" 
+                        id="gameName" 
+                        class="form-control"
+                        >
+                </div>
+    
+                <!-- Duration -->
+                <div class="mb-3">
+                    <label for="duration" class="form-label">Duration</label>
+                    <input 
+                        formControlName="duration"
+                        placeholder="Duration of game in minutes (e.g. 60)"
+                        type="number" 
+                        id="duration" 
+                        class="form-control"
+                        >
+                </div>
+    
+                <!-- Time -->
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Time</label>
+                    <input 
+                        formControlName="datetime"
+                        type="datetime-local" 
+                        id="datetime" 
+                        class="form-control"
+                        >
+                </div>
+    
+                <!-- Players -->
+                <div class="mb-3">
+    
+                    <div class="mb-1">
+                        <div class="row">
+                            <div class="col">Player</div>
+                            <div class="col">Rank</div>
+                            <div class="col col-1"></div>
+                        </div>
+                    </div>
+                    <div 
+                        formArrayName="participants"
+                        *ngFor="let participant of form.get('participants')['controls']; let i = index;" 
+                        class="mb-2"
+                        >
+                        <div [formGroupName]="i">
+                            <div class="row">
+                                <div class="col">
+                                    <input 
+                                        formControlName="player" 
+                                        type="text" 
+                                        class="form-control"
+                                        >
+                                </div>
+                                <div class="col">
+                                    <input 
+                                        formControlName="rank" 
+                                        type="number" 
+                                        class="form-control"
+                                        >
+                                </div>
+                                <div class="col col-1">
+                                    <button 
+                                        class="btn btn-secondary btn-sm me-1"
+                                        (click)="addParticipant(participant.value.player, participant.value.rank, i)"
+                                        >
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                    <button 
+                                        class="btn btn-danger btn-sm me-1"
+                                        (click)="deleteParticipant(i)"
+                                        [disabled]="(form.get('participants').length == 1)"
+                                        >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    
+        <div>
+            <button 
+                class="btn btn-primary" 
+                (click)="submit()"
+                [disabled]="!form.valid"
+                type="submit"
+                >
+                Submit
+                <div *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"></div>
+            </button>
+        </div>
+    
+        </div>
+    </div>
+</fieldset>
+
+

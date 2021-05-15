@@ -17,4 +17,8 @@ export class GamesService {
   getAll(): Observable<Game[]> {
     return this.http.get<Game[]>(this.url)
   }
+
+  post(game: Game) {
+    return this.http.post<Game>(this.url, game)
+  }
 }
