@@ -1,10 +1,14 @@
 version: "3.9"  # optional since v1.27.0
 services:
-    front-end:
+    web:
         build: ./front-end
         ports:
             - "80:80"
-    back-end:
+    api:
         build: ./back-end 
         ports: 
             - "8000:8000"
+        volumes: 
+            - type: bind
+              source: ./back-end/database
+              target: /src/database

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Game } from '../models/game';
 
 
@@ -9,7 +10,7 @@ import { Game } from '../models/game';
 })
 export class GamesService {
 
-  url: string = "http://localhost:8000/games"
+  url = environment.apiUrl + "/games"
 
   constructor(private http: HttpClient) { }
 

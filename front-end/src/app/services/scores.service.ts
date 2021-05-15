@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Score } from '../models/score';
 
 
@@ -9,9 +10,11 @@ import { Score } from '../models/score';
 })
 export class ScoresService {
 
-  url: string = "http://localhost:8000/scores"
+  url = environment.apiUrl + "/scores"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log(this.url)
+   }
 
   getAll(): Observable<Score[]> {
     return this.http.get<Score[]>(this.url)

@@ -50,7 +50,7 @@ RUN poetry install --no-dev
 # `production` image used for runtime
 FROM python-base
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-COPY ./app /app/
-WORKDIR /app
+WORKDIR /src
+COPY app app
 EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

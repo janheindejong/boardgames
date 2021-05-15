@@ -1,18 +1,42 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Time</th>
-            <th scope="col">Duration</th>
-            <th scope="col">Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let game of games">
-            <td>{{ game.name }}</td>
-            <td>{{ game.datetime }}</td>
-            <td>{{ game.duration }} min</td>
-            <td>{{ game.points }} </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Games</h5>
+        <p class="card-text">This contains an overview of all the games played. You can create, update or delete games.</p>
+        <button 
+            class="btn btn-primary mb-2"
+            data-bs-toggle="modal" 
+            data-bs-target="#addGameModel"
+            >
+            <i class="bi bi-plus-lg"></i> 
+            Add new game
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Points</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let game of games">
+                    <td>{{ game.name }}</td>
+                    <td>{{ game.datetime | date:'medium' }}</td>
+                    <td>{{ game.duration }} min</td>
+                    <td>{{ game.points }} </td>
+                    <td class="text-end">
+                        <button class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i></button>
+                        <button 
+                            class="btn btn-danger btn-sm me-1"
+                            (click)="delete(game)"
+                            >
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

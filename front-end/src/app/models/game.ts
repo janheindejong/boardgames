@@ -10,7 +10,7 @@ export interface Participant {
 export interface Game {
     id: number
     name: string
-    datetime: string
+    datetime: Date
     duration: number 
     points: number
     participants: Participant[]

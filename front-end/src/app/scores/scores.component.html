@@ -1,18 +1,24 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Player</th>
-            <th scope="col">Participation</th>
-            <th scope="col">Performance</th>
-            <th scope="col">Overall score</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let score of scores">
-            <td>{{ score.player }}</td>
-            <td>{{ score.participation }}%</td>
-            <td>{{ score.performance }}%</td>
-            <td>{{ score.score }}%</td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Scores</h5>
+        <p class="card-text">This is an overview of all the scores. This piece of text contains a bit of explanation on how this is created.</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Player</th>
+                    <th scope="col">Participation</th>
+                    <th scope="col">Performance</th>
+                    <th scope="col">Overall score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let score of scores">
+                    <td>{{ score.player }}</td>
+                    <td>{{ score.participation }}%</td>
+                    <td>{{ score.performance }}%</td>
+                    <td>{{ score.score }}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
