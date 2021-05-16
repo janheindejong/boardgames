@@ -26,11 +26,10 @@ export class GamesComponent implements OnInit {
 
   delete(game: Game): void {
     if (confirm("Are you sure you want to remove " + game.name + "?")) {
-      console.log("Deleting")
-    } else {
-      console.log("Not deleting")
-    }
-
+      let index = this.games.indexOf(game)
+      this.games.splice(index, 1)
+      this.service.delete(game.id).subscribe()
+    } 
   }
 
 }

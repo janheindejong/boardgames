@@ -14,7 +14,7 @@ class Game(Base):
     datetime = Column(DateTime)
     duration = Column(Integer)
     points = Column(Integer)
-    participants = relationship("Participant")
+    participants = relationship("Participant", cascade="all, delete")
 
 
 class Participant(Base):

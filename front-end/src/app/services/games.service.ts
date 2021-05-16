@@ -18,7 +18,11 @@ export class GamesService {
     return this.http.get<Game[]>(this.url)
   }
 
-  post(game: Game) {
+  post(game: Game): Observable<Game> {
     return this.http.post<Game>(this.url, game)
+  }
+
+  delete(id: number): Observable<{}> {
+    return this.http.delete<{}>(this.url + "/" + id)
   }
 }

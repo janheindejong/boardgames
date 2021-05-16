@@ -9,6 +9,7 @@ services:
         ports: 
             - "8000:8000"
         volumes: 
-            - type: bind
-              source: ./back-end/database
-              target: /src/database
+            - db:/src/db
+
+volumes: 
+    db:

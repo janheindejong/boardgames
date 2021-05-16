@@ -42,6 +42,16 @@ def get_games(db: Session):
     return db.query(Game).options(selectinload(Game.participants)).all()
 
 
+def get_game(db: Session, id: int): 
+    return (
+        db
+            .query(Game)
+            .filter(Game.id == id)
+            .options(selectinload(Game.participants))
+            .first()
+    )
+
+
 def create_new_game(db: Session, obj_in: schemas.GameCreate):
     game = Game(
         name=obj_in.name,
@@ -64,6 +74,12 @@ def create_new_game(db: Session, obj_in: schemas.GameCreate):
     db.commit()
     db.refresh(game)
     return game
+
+
+def delete_game(db: Session, id: int) -> None: 
+    game = db.query(Game).filter(Game.id == id).first()
+    db.delete(game)
+    db.commit()
 
 
 def _extract_game_points(duration):
