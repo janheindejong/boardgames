@@ -5,7 +5,7 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from app import crud, schemas, models
+from app import crud, models, schemas
 from app.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
@@ -41,12 +41,11 @@ def get_games(db: Session = Depends(get_db)) -> List[schemas.Game]:
 
 
 @app.delete("/games/{id}", response_model=dict)
-def delete_game(id: int, db: Session = Depends(get_db)) -> schemas.Game: 
+def delete_game(id: int, db: Session = Depends(get_db)) -> schemas.Game:
     crud.delete_game(db, id)
     return {}
+
 
 @app.get("/scores", response_model=List[schemas.Score])
 def get_scores(db: Session = Depends(get_db)) -> List[schemas.Score]:
     return [s._asdict() for s in crud.get_scores(db)]
-
-

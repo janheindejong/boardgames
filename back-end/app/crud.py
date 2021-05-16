@@ -3,8 +3,8 @@
 from sqlalchemy import func, text
 from sqlalchemy.orm import Session, selectinload
 
-from .models import Game, Participant
 from . import schemas
+from .models import Game, Participant
 
 WEIGHT_PERFORMANCE = 0.5
 WEIGHT_PARTICIPATION = 1 - WEIGHT_PERFORMANCE
@@ -42,13 +42,12 @@ def get_games(db: Session):
     return db.query(Game).options(selectinload(Game.participants)).all()
 
 
-def get_game(db: Session, id: int): 
+def get_game(db: Session, id: int):
     return (
-        db
-            .query(Game)
-            .filter(Game.id == id)
-            .options(selectinload(Game.participants))
-            .first()
+        db.query(Game)
+        .filter(Game.id == id)
+        .options(selectinload(Game.participants))
+        .first()
     )
 
 
@@ -76,7 +75,7 @@ def create_new_game(db: Session, obj_in: schemas.GameCreate):
     return game
 
 
-def delete_game(db: Session, id: int) -> None: 
+def delete_game(db: Session, id: int) -> None:
     game = db.query(Game).filter(Game.id == id).first()
     db.delete(game)
     db.commit()
